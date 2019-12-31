@@ -1,18 +1,39 @@
 plugins {
     id 'groovy'
     id 'java'
+    id "com.energizedwork.webdriver-binaries" version "1.4"
 }
 
 group 'org.example'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
-
 repositories {
     mavenCentral()
 }
+ext {
+    gebVersion = '3.2'
+    seleniumVersion = '3.14.0'
+    chromeDriverVersion = '79.0.3945.36'
+}
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.3.11'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile("org.spockframework:spock-core:1.3-groovy-2.5")
+    testCompile "org.gebish:geb-spock:$gebVersion"
+    // Drivers
+    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+
+    //Docker test container
+    testCompile "org.testcontainers:spock:1.12.3"
+    testCompile "org.testcontainers:selenium:1.12.3"
+
+}
+webdriverBinaries {
+    chromedriver chromeDriverVersion
+}
+
+test {
+    systemProperty "geb.env", "dockerchrome"
+
 }
