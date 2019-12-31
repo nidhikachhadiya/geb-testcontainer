@@ -1,9 +1,10 @@
 package spec
 
+import geb.spock.GebReportingSpec
 import geb.spock.GebSpec
 import page.GebishHomePage
 
-class GebishSpec extends GebSpec{
+class GebishSpec extends GebReportingSpec{
 
     /*
        @author nidhi.kachhadiya
