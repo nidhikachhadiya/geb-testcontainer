@@ -14,7 +14,7 @@ repositories {
 ext {
     gebVersion = '3.2'
     seleniumVersion = '3.14.0'
-    chromeDriverVersion = '79.0.3945.36'
+    chromeDriverVersion = '83.0.4103.39'
 }
 
 dependencies {
@@ -34,6 +34,6 @@ webdriverBinaries {
 }
 
 test {
-    systemProperty "geb.env", "dockerchrome"
+    systemProperty "geb.env", "chrome"
 
 }
